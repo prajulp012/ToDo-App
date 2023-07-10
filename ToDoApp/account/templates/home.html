@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Landing PAGE Html5 Template">
+
+    <meta name="keywords" content="landing,startup,flat">
+
+    <meta name="author" content="Made By GN DESIGNS">
+
+
+
+    <title>To Do App</title>
+
+
+
+    <!-- // PLUGINS (css files) // -->
+
+    <link href="{% static 'assets/js/plugins/bootsnav_files/skins/color.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/bootsnav_files/skins/color.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/bootsnav_files/css/animate.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/bootsnav_files/css/animate.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/bootsnav_files/css/bootsnav.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/bootsnav_files/css/bootsnav.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/bootsnav_files/css/overwrite.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/bootsnav_files/css/overwrite.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/owl-carousel/owl.carousel.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/owl-carousel/owl.theme.css' %}" rel="stylesheet">
+    <!-- <link href="assets/js/plugins/owl-carousel/owl.theme.css" rel="stylesheet"> -->
+
+    <link href="{% static 'assets/js/plugins/owl-carousel/owl.transitions.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css' %}" rel="stylesheet">
+
+    <!--// ICONS //-->
+
+    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css' %}" rel="stylesheet">
+
+    <link href="{% static 'https://fonts.googleapis.com/icon?family=Material+Icons' %}" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+
+    <link href="{% static 'assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+    <!-- <link href="assets/css/main.css" rel="stylesheet"> -->
+
+</head>
+
+
+
+<body>
+    <!--//** Navigation**//-->
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+
+
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <a class="navbar-brand" href="#brand">
+
+                    <img src="{% static 'assets/img/todoo.png' %}" width="300px"   ToDo class="logo" alt="logo">
+                
+
+                </a>
+
+            </div>
+
+            <!-- End Header Navigation -->
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar-menu">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active scroll"><a href="{% url 'home' %}">Home</a></li>
+
+                    <li class="active scroll"><a href="{% url 'details' %}">To Do Activities</a></li>
+
+                    <li class="scroll "><a href="{% url 'lgout' %}">Log Out</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+
+        </div>
+
+    </nav>
+
+   
+    <!--======================================== 
+
+           Header
+
+    ========================================-->
+
+
+    <!--//** Banner**//-->
+
+    <section id="home">
+        {% for i in messages %}
+        <div class="alert alert-success">
+            <p>{{i}}</p>
+        </div>
+        {% endfor %}
+    
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Introduction -->
+
+                <div class="col-md-2 caption">
+
+                </div>
+
+                <!-- Sign Up -->
+
+                <div class="col-md-6 col-md-offset-1">
+
+                    <form method="post" class="signup-form">
+                        {% csrf_token %}
+
+                        <h2 class="text-center">ToDo List</h2>
+
+                        <div class="form-group">
+                            {{form.title.errors}}
+                            <label for="{{form.title.id_for_label}}">Title</label>
+                            {{form.title}}
+                        </div>
+                        <div class="form-group">
+                            {{form.description.errors}}
+                            <label for="{{form.description.id_for_label}}">Description</label>
+                            {{form.description}}
+                        </div>
+
+                        <div class="form-group text-center">
+
+                            <button type="submit" class="btn btn-blue btn-block">Add</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="col-md-4 caption">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %}"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="{% static 'assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/plugins/bootsnav_files/js/bootsnav.js' %}"></script>
+
+    <script src="{% static 'assets/js/plugins/typed.js-master/typed.js-master/dist/typed.min.js' %}"></script>
+
+    <script src="{% static 'https://maps.googleapis.com/maps/api/js' %}"></script>
+
+    <script src="{% static 'assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/jquery.magnific-popup.js' %}"></script>
+    <!-- <script src="assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script> -->
+
+
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
+
+</body>
+
+
+
+</html>
